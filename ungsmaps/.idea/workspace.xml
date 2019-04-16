@@ -393,7 +393,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555450566892" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555451248214" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -422,7 +423,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.UserCase03">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.App" />
+      <module name="ungs-maps" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserCase01" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ungsmaps" />
       <extension name="coverage">
@@ -449,24 +463,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="userstories" />
       <option name="MAIN_CLASS_NAME" value="userstories.UserCase03" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserCase03.getDataInCache_listSizeEmpty" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ungsmaps" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="userstories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="userstories" />
-      <option name="MAIN_CLASS_NAME" value="userstories.UserCase03" />
-      <option name="METHOD_NAME" value="getDataInCache_listSizeEmpty" />
-      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -508,19 +504,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="TestNG.UserCase03.getDataInCache_listSizeEmpty" />
       <item itemvalue="TestNG.UserCase03.updateDataInCache_ValueUpdatedTest" />
       <item itemvalue="TestNG.UserCase03" />
       <item itemvalue="TestNG.userstories" />
       <item itemvalue="TestNG.UserCase01" />
+      <item itemvalue="Application.App" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="TestNG.UserCase03" />
         <item itemvalue="TestNG.UserCase01" />
         <item itemvalue="TestNG.userstories" />
         <item itemvalue="TestNG.UserCase03.updateDataInCache_ValueUpdatedTest" />
-        <item itemvalue="TestNG.UserCase03.getDataInCache_listSizeEmpty" />
       </list>
     </recent_temporary>
   </component>
