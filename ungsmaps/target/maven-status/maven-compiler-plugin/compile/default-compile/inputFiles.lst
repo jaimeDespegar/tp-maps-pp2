@@ -1,0 +1,12 @@
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/model/LocationSearchDto.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/model/DataCache.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/model/LocationProxy.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/main/App.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/model/LocationConnector.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/myCache/LocationData.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/model/Coordinate.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/services/ServiceProxy.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/builder/LocationSearchBuilder.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/myCache/LocationCache.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/factory/MockLocationFactory.java
+/home/jaimequispe/cfa-team/ungsmaps/src/main/java/model/LocationFactory.java

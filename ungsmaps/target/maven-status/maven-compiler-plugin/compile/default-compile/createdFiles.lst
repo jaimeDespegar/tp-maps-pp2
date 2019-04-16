@@ -1,0 +1,12 @@
+main/App.class
+builder/LocationSearchBuilder.class
+myCache/LocationData.class
+model/LocationProxy.class
+model/LocationConnector.class
+model/LocationSearchDto.class
+services/ServiceProxy.class
+model/DataCache.class
+factory/MockLocationFactory.class
+myCache/LocationCache.class
+model/Coordinate.class
+model/LocationFactory.class
