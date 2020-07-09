@@ -11,35 +11,35 @@ import java.util.Map;
 
 public class LocationData implements DataCache {
 
-    private Map<LocationSearchDto, List<Coordinate>> myDataCahe;
+    private Map<LocationSearchDto, List<Coordinate>> myDataCache;
 
     public LocationData() {
-        this.myDataCahe = Maps.newHashMap();
+        this.myDataCache = Maps.newHashMap();
     }
 
     public boolean save(LocationSearchDto locationSearchDto, List<Coordinate> data) {
-        if(!this.myDataCahe.containsKey(locationSearchDto) && !data.isEmpty())
-            this.myDataCahe.put(locationSearchDto, data);
+        if(!this.myDataCache.containsKey(locationSearchDto) && !data.isEmpty())
+            this.myDataCache.put(locationSearchDto, data);
         return true;
     }
 
     @Override
     public boolean delete(LocationSearchDto locationSearchDto) {
-        return !myDataCahe.remove(locationSearchDto).isEmpty();
+        return !myDataCache.remove(locationSearchDto).isEmpty();
     }
 
     @Override
     public boolean update(LocationSearchDto locationSearchDto, List<Coordinate> data) {
-        return !myDataCahe.replace(locationSearchDto, data).isEmpty();
+        return !myDataCache.replace(locationSearchDto, data).isEmpty();
     }
 
     @Override
     public List<Coordinate> getAll() {
-        return new ArrayList(myDataCahe.values());
+        return new ArrayList(myDataCache.values());
     }
 
     public List<Coordinate> getRoadByCoordinates(LocationSearchDto locationSearchDto) {
-        return myDataCahe.getOrDefault(locationSearchDto, Lists.newArrayList());
+        return myDataCache.getOrDefault(locationSearchDto, Lists.newArrayList());
     }
 
 }

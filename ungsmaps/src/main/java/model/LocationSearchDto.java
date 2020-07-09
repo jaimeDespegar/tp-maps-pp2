@@ -1,6 +1,6 @@
 package model;
 
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 public class LocationSearchDto {
 
@@ -30,17 +30,19 @@ public class LocationSearchDto {
         this.arrival = arrival;
     }
 
+    // TODO eliminar?
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LocationSearchDto that = (LocationSearchDto) o;
-        return Objects.equal(departure, that.departure) &&
-                Objects.equal(arrival, that.arrival);
+        return Objects.equals(departure, that.departure) &&
+                Objects.equals(arrival, that.arrival);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(departure, arrival);
+        return Objects.hashCode(departure);
     }
+
 }
