@@ -23,5 +23,6 @@
 hs_err_pid*
 
 *.iml
-.idea/
+.idea
 target/
+workspace.xml
