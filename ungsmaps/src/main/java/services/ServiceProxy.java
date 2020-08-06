@@ -3,16 +3,16 @@ package services;
 import model.*;
 import java.util.List;
 
-public class ServiceProxy implements LocationProxy {
+public class ServiceProxy implements Service {
 
-    private LocationConnector locationConnector;
+    private LocationConnector delegate;
 
     public ServiceProxy(LocationFactory locationFactory) {
-        this.locationConnector = locationFactory.buildCompositeConnector();
+        this.delegate = locationFactory.buildCompositeConnector();
     }
 
     public List<Coordinate> getRoad(LocationSearchDto locationSearchDto) {
-        return this.locationConnector.getData(locationSearchDto);
+        return this.delegate.getData(locationSearchDto.getArrival(), locationSearchDto.getDeparture());
     }
 
 }

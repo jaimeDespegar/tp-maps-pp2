@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-public interface LocationProxy {
+public interface Service {
 
     List<Coordinate> getRoad(LocationSearchDto locationSearchDto);
 
