@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Objects;
-
 public class LocationSearchDto {
 
     private Coordinate departure;
@@ -28,21 +26,6 @@ public class LocationSearchDto {
 
     public void setArrival(Coordinate arrival) {
         this.arrival = arrival;
-    }
-
-    // TODO eliminar?
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LocationSearchDto that = (LocationSearchDto) o;
-        return Objects.equals(departure, that.departure) &&
-                Objects.equals(arrival, that.arrival);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(departure);
     }
 
 }

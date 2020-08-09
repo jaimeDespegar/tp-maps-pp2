@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import model.Coordinate;
 import model.DataCache;
 import model.LocationSearchDto;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +34,7 @@ public class LocationData implements DataCache {
 
     @Override
     public List<Coordinate> getAll() {
-        return new ArrayList(myDataCache.values());
+        return null;
     }
 
     public List<Coordinate> getRoadByCoordinates(LocationSearchDto locationSearchDto) {

@@ -1,6 +1,5 @@
 package userstories;
 
-import builder.LocationSearchBuilder;
 import com.google.common.collect.Lists;
 import model.Coordinate;
 import model.LocationSearchDto;
@@ -19,7 +18,7 @@ public class UserCase03 {
     @BeforeClass
     public void setUp() {
         this.locationData = new LocationData();
-        this.locationSearchDtoSaved = new LocationSearchBuilder().withArrival(22, 66).withDeparture(22, 66).build();
+        //this.locationSearchDtoSaved = new LocationSearchBuilder().withArrival(22, 66).withDeparture(22, 66).build();
     }
 
     @BeforeMethod
@@ -34,14 +33,14 @@ public class UserCase03 {
 
     @Test
     public void getDataInCache_listSizeEmptyTest() {
-        LocationSearchDto dtoEmpty = new LocationSearchBuilder().withArrival(23, 41).withDeparture(50, 60).build();
-        assertTrue(this.locationData.getRoadByCoordinates(dtoEmpty).isEmpty());
+        //LocationSearchDto dtoEmpty = new LocationSearchBuilder().withArrival(23, 41).withDeparture(50, 60).build();
+        assertTrue(this.locationData.getRoadByCoordinates(null).isEmpty());
     }
 
     @Test
     public void saveDataInCache_listSizeTwoTest() {
-        LocationSearchDto dtoEmpty = new LocationSearchBuilder().withArrival(23, 41).withDeparture(50, 60).build();
-        this.locationData.save(dtoEmpty, Lists.newArrayList(new Coordinate(11, 22)));
+        //LocationSearchDto dtoEmpty = new LocationSearchBuilder().withArrival(23, 41).withDeparture(50, 60).build();
+        this.locationData.save(null, Lists.newArrayList(new Coordinate(11, 22)));
         assertEquals(this.locationData.getAll().size(), 2);
     }
 

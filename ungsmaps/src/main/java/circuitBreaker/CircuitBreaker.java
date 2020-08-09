@@ -1,54 +1,57 @@
 package circuitBreaker;
 
+import circuitBreaker.states.CloseCircuiteState;
+import circuitBreaker.states.HalfOpenCircuitState;
+import circuitBreaker.states.OpenCircuitState;
 import com.google.common.collect.Lists;
+import implementation.ApiLocationMock;
 import model.Coordinate;
 import model.LocationConnector;
-import utils.ManagerTimer;
-import utils.MyTimer;
-
 import java.util.List;
 
-public class CircuitBreaker {
+public class CircuitBreaker implements  ICircuitBreaker {
 
     private LocationConnector provider;
-    private String state = "CLOSE";
-    private Integer fails = 0;
+    private CircuitState state;
 
     public CircuitBreaker(LocationConnector connector) {
         this.provider = connector;
+        this.state = new HalfOpenCircuitState();
     }
 
-    public List<Coordinate> doSomething() {
+    @Override
+    public List<Coordinate> doSomething(Coordinate from, Coordinate to) {
 
-        List<Coordinate> result = Lists.newArrayList();
-
-        if (state.equalsIgnoreCase("CLOSE")) {
-            try {
-                result = this.provider.getData(null);
-            } catch (RuntimeException re) {
-                fails++;
-            }
-            if (fails == 3) {
-                this.state = "OPEN";
-            }
+        List<Coordinate> result;
+        try {
+            result = this.state.call(this, from, to);
+        } catch (OpenCircuitException oce) {
+            System.out.println(oce.getMessage());
+            result = Lists.newArrayList();
         }
-
-        else if (state.equalsIgnoreCase("OPEN")) {
-            ManagerTimer manager = new ManagerTimer(new MyTimer());
-            manager.start();
-            throw new OpenCircuitException("Circuit is Open: service not available");
-        }
-
-        else if (state.equalsIgnoreCase("HALF-OPEN")) {
-            try {
-                this.provider.getData(null);
-                this.state = "CLOSE";
-            } catch (RuntimeException re) {
-                this.state = "OPEN";
-            }
-        }
-
         return result;
+    }
+
+    @Override
+    public void setCurrentState(CircuitState currentState) {
+        System.out.println("Soy un state: " + currentState.toString());
+        this.state = currentState;
+    }
+
+    @Override
+    public LocationConnector getProvider() {
+        return this.provider;
+    }
+
+    public static void main(String[] args) {
+        ICircuitBreaker circuitBreaker = new CircuitBreaker(new ApiLocationMock());
+        Coordinate from = new Coordinate(11, 22);
+        Coordinate to = new Coordinate(33, 44);
+
+        List<Coordinate> coordinates = circuitBreaker.doSomething(from, to);
+        coordinates.forEach(i-> {
+            System.out.println(i.getX() + " - "+i.getY());
+        });
     }
 
 }

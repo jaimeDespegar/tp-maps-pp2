@@ -1,10 +1,11 @@
 package circuitBreaker;
 
-import model.LocationConnector;
+import model.Coordinate;
+
+import java.util.List;
 
 public interface CircuitState {
 
-    void call(LocationConnector connector);
-    CircuitState nextState();
+    List<Coordinate> call(ICircuitBreaker context, Coordinate from, Coordinate to);
 
 }
