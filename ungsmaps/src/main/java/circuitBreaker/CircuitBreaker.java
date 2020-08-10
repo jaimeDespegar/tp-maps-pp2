@@ -1,8 +1,6 @@
 package circuitBreaker;
 
-import circuitBreaker.states.CloseCircuiteState;
 import circuitBreaker.states.HalfOpenCircuitState;
-import circuitBreaker.states.OpenCircuitState;
 import com.google.common.collect.Lists;
 import implementation.ApiLocationMock;
 import model.Coordinate;
@@ -20,11 +18,11 @@ public class CircuitBreaker implements  ICircuitBreaker {
     }
 
     @Override
-    public List<Coordinate> doSomething(Coordinate from, Coordinate to) {
+    public List<Coordinate> doSomething(Coordinate arrival, Coordinate departure) {
 
         List<Coordinate> result;
         try {
-            result = this.state.call(this, from, to);
+            result = this.state.call(this, arrival, departure);
         } catch (OpenCircuitException oce) {
             System.out.println(oce.getMessage());
             result = Lists.newArrayList();

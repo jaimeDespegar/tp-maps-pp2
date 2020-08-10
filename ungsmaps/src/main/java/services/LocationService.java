@@ -12,8 +12,8 @@ public class LocationService implements Service {
         this.circuitBreaker = circuitBreaker;
     }
 
-    public List<Coordinate> getRoad(LocationSearchDto locationSearchDto) {
-        return this.circuitBreaker.doSomething(locationSearchDto.getArrival(), locationSearchDto.getDeparture());
+    public List<Coordinate> getRoad(Coordinate arrival, Coordinate departure) {
+        return this.circuitBreaker.doSomething(arrival, departure);
     }
 
 }

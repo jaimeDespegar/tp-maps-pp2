@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Service {
 
-    List<Coordinate> getRoad(LocationSearchDto locationSearchDto);
+    List<Coordinate> getRoad(Coordinate arrival, Coordinate departure);
 
 }
