@@ -2,7 +2,6 @@ package circuitBreaker;
 
 import circuitBreaker.states.HalfOpenCircuitState;
 import com.google.common.collect.Lists;
-import implementation.ApiLocationMock;
 import model.Coordinate;
 import model.LocationConnector;
 import java.util.List;
@@ -42,7 +41,7 @@ public class CircuitBreaker implements  ICircuitBreaker {
     }
 
     public static void main(String[] args) {
-        ICircuitBreaker circuitBreaker = new CircuitBreaker(new ApiLocationMock());
+        ICircuitBreaker circuitBreaker = new CircuitBreaker(null);
         Coordinate from = new Coordinate(11, 22);
         Coordinate to = new Coordinate(33, 44);
 

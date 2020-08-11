@@ -32,7 +32,6 @@
             <scope>test</scope>
         </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -40,10 +39,9 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>pp2</groupId>
-            <artifactId>LocationMock</artifactId>
+            <artifactId>location-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

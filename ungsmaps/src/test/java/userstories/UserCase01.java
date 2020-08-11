@@ -1,19 +1,19 @@
 package userstories;
 
-import implementation.ApiLocationMock;
 import static org.testng.Assert.*;
+import model.LocationConnector;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class UserCase01 {
 
-    private ApiLocationMock providerA, providerB, providerC;
+    private LocationConnector providerA, providerB, providerC;
 
     @BeforeClass
     public void setUp() {
-        this.providerA = new ApiLocationMock();
+/*        this.providerA = new ApiLocationMock();
         this.providerB = new ApiLocationMock();
-        this.providerC = new ApiLocationMock();
+        this.providerC = new ApiLocationMock();*/
 
         this.providerA.off();
         this.providerB.on();
