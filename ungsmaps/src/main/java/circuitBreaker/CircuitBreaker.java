@@ -31,7 +31,6 @@ public class CircuitBreaker implements  ICircuitBreaker {
 
     @Override
     public void setCurrentState(CircuitState currentState) {
-        System.out.println("Soy un state: " + currentState.toString());
         this.state = currentState;
     }
 

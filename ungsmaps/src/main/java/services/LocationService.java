@@ -1,7 +1,8 @@
 package services;
 
 import circuitBreaker.ICircuitBreaker;
-import model.*;
+import core.Service;
+import model.Coordinate;
 import java.util.List;
 
 public class LocationService implements Service {

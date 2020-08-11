@@ -2,9 +2,7 @@ package factory;
 
 import circuitBreaker.CircuitBreaker;
 import circuitBreaker.ICircuitBreaker;
-import model.ProviderFactory;
-import model.Service;
-import model.ServiceFactory;
+import core.*;
 import services.LocationService;
 
 public class LocationServiceFactory implements ServiceFactory {

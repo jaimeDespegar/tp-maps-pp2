@@ -1,7 +1,7 @@
 package factory;
 
 import model.LocationConnector;
-import model.ProviderFactory;
+import core.ProviderFactory;
 
 public class MockProviderFactory implements ProviderFactory {
 

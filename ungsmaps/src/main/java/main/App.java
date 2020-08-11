@@ -2,7 +2,7 @@ package main;
 
 import circuitBreaker.CircuitBreaker;
 import factory.MockProviderFactory;
-import model.Service;
+import core.Service;
 import services.LocationService;
 
 public class App {
