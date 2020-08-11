@@ -3,19 +3,20 @@ package factory;
 import circuitBreaker.CircuitBreaker;
 import circuitBreaker.ICircuitBreaker;
 import core.*;
+import model.LocationConnector;
 import services.LocationService;
 
 public class LocationServiceFactory implements ServiceFactory {
 
-    private ProviderFactory providerFactory;
+    private ClassFactory classFactory;
 
-    public LocationServiceFactory(ProviderFactory providerFactory) {
-        this.providerFactory = providerFactory;
+    public LocationServiceFactory(ClassFactory classFactory) {
+        this.classFactory = classFactory;
     }
 
     @Override
     public Service build() {
-        ICircuitBreaker circuitBreaker = new CircuitBreaker(this.providerFactory.buildProvider());
+        ICircuitBreaker circuitBreaker = new CircuitBreaker((LocationConnector) this.classFactory.buildClass());
         return new LocationService(circuitBreaker);
     }
 
