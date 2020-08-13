@@ -1,6 +1,5 @@
 package core;
 
-import model.LocationConnector;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class CustomerClassLoader {
 
-    public <C> C loaded(String pathName, String className) {
+    public <C> C load(String pathName, String className) {
         File file = new File(pathName);
         File[] files = Optional.of(file).map(File::listFiles).orElse(new File[]{});
         List<File> jars = Arrays.asList(files).stream().filter(i->i.getPath().endsWith(".jar")).collect(Collectors.toList());
@@ -30,16 +29,6 @@ public class CustomerClassLoader {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException c) {
             throw new RuntimeException("Error cargando la clase");
         }
-    }
-
-    public static void main(String[] args) {
-        CustomerClassLoader loader = new CustomerClassLoader(); // ApiLocationMock  LocationCalculatorConnector
-
-        //LocationConnector connector = loader.loaded("/home/jaimequispe/ungs/pp2/tp-maps-pp2/ungsmaps/jars", "implementation.ApiLocationMock");
-        LocationConnector service = loader.loaded("/home/jaimequispe/ungs/pp2/tp-maps-pp2/ungsmaps/jars", "implementation.ApiLocationMock");
-
-        //System.out.println("connector is ok : " + connector.toString());
-       System.out.println("connector is ok : " + service.toString());
     }
 
 }

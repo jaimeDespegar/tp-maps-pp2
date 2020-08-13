@@ -1,13 +1,18 @@
 import factory.LocationServiceFactory;
-import factory.ProviderFactory;
+import factory.ClassLoaderFactory;
 import core.Service;
 import model.Coordinate;
+import model.LocationConnector;
 
 public class App {
 
     public static void main(String[] args) {
-        Service service = new LocationServiceFactory(new ProviderFactory()).build();
-        service.getRoad(new Coordinate(1,2), new Coordinate(3, 4))
+        String path = "/home/jaimequispe/ungs/pp2/jars";
+        String className = "implementation.ApiLocationMock";
+
+        LocationConnector connector = new ClassLoaderFactory().build(path, className);
+        Service service = new LocationServiceFactory().build(connector);
+        service.getRoad(new Coordinate(11,22), new Coordinate(33,44))
                .forEach(i->System.out.println(i.getX()+ " - "+ i.getY()));
     }
 
