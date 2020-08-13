@@ -34,8 +34,12 @@ public class CustomerClassLoader {
 
     public static void main(String[] args) {
         CustomerClassLoader loader = new CustomerClassLoader(); // ApiLocationMock  LocationCalculatorConnector
-        LocationConnector connector = loader.loaded("/home/jaimequispe/ungs/pp2/tp-maps-pp2/ungsmaps/jars", "implementation.ApiLocationMock");
-        System.out.println("connector is ok : " + connector.toString());
+
+        //LocationConnector connector = loader.loaded("/home/jaimequispe/ungs/pp2/tp-maps-pp2/ungsmaps/jars", "implementation.ApiLocationMock");
+        LocationConnector service = loader.loaded("/home/jaimequispe/ungs/pp2/tp-maps-pp2/ungsmaps/jars", "implementation.ApiLocationMock");
+
+        //System.out.println("connector is ok : " + connector.toString());
+       System.out.println("connector is ok : " + service.toString());
     }
 
 }
