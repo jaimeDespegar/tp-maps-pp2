@@ -1,19 +1,20 @@
 package circuitBreaker;
 
-import circuitBreaker.states.HalfOpenCircuitState;
 import com.google.common.collect.Lists;
+import core.CircuitState;
+import core.ICircuitBreaker;
 import model.Coordinate;
 import model.LocationConnector;
 import java.util.List;
 
-public class CircuitBreaker implements  ICircuitBreaker {
+public class CircuitBreaker implements ICircuitBreaker {
 
     private LocationConnector provider;
     private CircuitState state;
 
-    public CircuitBreaker(LocationConnector connector) {
+    public CircuitBreaker(LocationConnector connector, CircuitState initialState) {
         this.provider = connector;
-        this.state = new HalfOpenCircuitState();
+        this.state = initialState;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class CircuitBreaker implements  ICircuitBreaker {
     }
 
     public static void main(String[] args) {
-        ICircuitBreaker circuitBreaker = new CircuitBreaker(null);
+        ICircuitBreaker circuitBreaker = new CircuitBreaker(null, null);
         Coordinate from = new Coordinate(11, 22);
         Coordinate to = new Coordinate(33, 44);
 

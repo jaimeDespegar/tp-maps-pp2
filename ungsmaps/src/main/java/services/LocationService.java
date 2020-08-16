@@ -1,6 +1,6 @@
 package services;
 
-import circuitBreaker.ICircuitBreaker;
+import core.ICircuitBreaker;
 import core.Service;
 import model.Coordinate;
 import java.util.List;

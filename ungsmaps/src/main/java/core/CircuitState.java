@@ -1,7 +1,6 @@
-package circuitBreaker;
+package core;
 
 import model.Coordinate;
-
 import java.util.List;
 
 public interface CircuitState {

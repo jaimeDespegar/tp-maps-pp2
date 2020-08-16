@@ -1,4 +1,4 @@
-package circuitBreaker;
+package core;
 
 import model.Coordinate;
 import model.LocationConnector;

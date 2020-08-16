@@ -27,7 +27,7 @@ public class CustomerClassLoader {
         try {
             return (C) Class.forName(className, true, childClassLoader).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException c) {
-            throw new RuntimeException("Error cargando la clase");
+            throw new RuntimeException("Error cargando la clase", c);
         }
     }
 

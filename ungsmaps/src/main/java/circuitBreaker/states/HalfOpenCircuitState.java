@@ -1,7 +1,7 @@
 package circuitBreaker.states;
 
-import circuitBreaker.CircuitState;
-import circuitBreaker.ICircuitBreaker;
+import core.CircuitState;
+import core.ICircuitBreaker;
 import com.google.common.collect.Lists;
 import model.Coordinate;
 import java.util.List;

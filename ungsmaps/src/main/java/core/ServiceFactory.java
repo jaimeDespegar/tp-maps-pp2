@@ -1,9 +1,7 @@
 package core;
 
-import model.LocationConnector;
-
 public interface ServiceFactory {
 
-    Service build(LocationConnector connector);
+    Service build(ICircuitBreaker circuitBreaker);
 
 }
