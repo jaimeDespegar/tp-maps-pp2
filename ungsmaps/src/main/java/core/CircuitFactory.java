@@ -1,9 +1,9 @@
 package core;
 
-import model.LocationConnector;
+import model.Location;
 
 public interface CircuitFactory {
 
-    ICircuitBreaker build(LocationConnector connector);
+    ICircuitBreaker build(Location provider);
 
 }

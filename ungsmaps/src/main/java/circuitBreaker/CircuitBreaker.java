@@ -4,15 +4,15 @@ import com.google.common.collect.Lists;
 import core.CircuitState;
 import core.ICircuitBreaker;
 import model.Coordinate;
-import model.LocationConnector;
+import model.Location;
 import java.util.List;
 
 public class CircuitBreaker implements ICircuitBreaker {
 
-    private LocationConnector provider;
+    private Location provider;
     private CircuitState state;
 
-    public CircuitBreaker(LocationConnector connector, CircuitState initialState) {
+    public CircuitBreaker(Location connector, CircuitState initialState) {
         this.provider = connector;
         this.state = initialState;
     }
@@ -36,7 +36,7 @@ public class CircuitBreaker implements ICircuitBreaker {
     }
 
     @Override
-    public LocationConnector getProvider() {
+    public Location getProvider() {
         return this.provider;
     }
 

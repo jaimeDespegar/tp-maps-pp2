@@ -4,15 +4,15 @@ import factory.LocationServiceFactory;
 import factory.ClassLoaderFactory;
 import core.Service;
 import model.Coordinate;
-import model.LocationConnector;
+import model.Location;
 
 public class App {
 
     public static void main(String[] args) {
         String path = "/home/jaimequispe/ungs/pp2/jars";
-        String className = "implementation.ApiLocationMock";
+        String className = "implementation.LocationCalculator";
 
-        LocationConnector connector = new ClassLoaderFactory().build(path, className);
+        Location connector = new ClassLoaderFactory().build(path, className);
         ICircuitBreaker circuitBreaker = new CircuitBreakerFactory().build(connector);
         Service service = new LocationServiceFactory().build(circuitBreaker);
 

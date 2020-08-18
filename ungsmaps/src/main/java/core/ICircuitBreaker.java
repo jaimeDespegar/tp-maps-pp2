@@ -1,13 +1,13 @@
 package core;
 
 import model.Coordinate;
-import model.LocationConnector;
+import model.Location;
 import java.util.List;
 
 public interface ICircuitBreaker {
 
     List<Coordinate> doSomething(Coordinate arrival, Coordinate departure);
     void setCurrentState(CircuitState currentState);
-    LocationConnector getProvider();
+    Location getProvider();
 
 }

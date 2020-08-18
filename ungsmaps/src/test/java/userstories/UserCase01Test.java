@@ -1,21 +1,21 @@
 package userstories;
 
-import implementation.ApiLocationMock;
+import implementation.LocationMock;
 import model.Coordinate;
-import model.LocationConnector;
+import model.Location;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class UserCase01Test {
 
-    private LocationConnector providerA, providerB, providerC;
+    private Location providerA, providerB, providerC;
 
     @Before
     public void setUp() {
-        this.providerA = new ApiLocationMock();
-        this.providerB = new ApiLocationMock();
-        this.providerC = new ApiLocationMock();
+        this.providerA = new LocationMock();
+        this.providerB = new LocationMock();
+        this.providerC = new LocationMock();
 
         this.providerA.off();
         this.providerB.on();
