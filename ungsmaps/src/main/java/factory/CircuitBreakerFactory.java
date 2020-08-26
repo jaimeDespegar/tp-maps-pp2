@@ -1,10 +1,10 @@
 package factory;
 
-import circuitBreaker.CircuitBreaker;
 import core.ICircuitBreaker;
-import circuitBreaker.states.CloseCircuiteState;
 import core.CircuitFactory;
 import model.Location;
+import circuitBreaker.CircuitBreaker;
+import circuitBreaker.states.CloseCircuiteState;
 
 public class CircuitBreakerFactory implements CircuitFactory {
 
