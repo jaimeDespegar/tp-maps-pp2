@@ -40,15 +40,4 @@ public class CircuitBreaker implements ICircuitBreaker {
         return this.provider;
     }
 
-    public static void main(String[] args) {
-        ICircuitBreaker circuitBreaker = new CircuitBreaker(null, null);
-        Coordinate from = new Coordinate(11, 22);
-        Coordinate to = new Coordinate(33, 44);
-
-        List<Coordinate> coordinates = circuitBreaker.doSomething(from, to);
-        coordinates.forEach(i-> {
-            System.out.println(i.getX() + " - "+i.getY());
-        });
-    }
-
 }
