@@ -3,32 +3,38 @@ package core;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CustomerClassLoader {
 
     public <C> C load(String pathName, String className) {
-        File file = new File(pathName);
-        File[] files = Optional.of(file).map(File::listFiles).orElse(new File[]{});
-        List<File> jars = Arrays.asList(files).stream().filter(i->i.getPath().endsWith(".jar")).collect(Collectors.toList());
-
-        URL[] urls = new URL[jars.size()];
-        for (int i = 0; i < jars.size(); i++) {
-            try {
-                urls[i] = jars.get(i).toURI().toURL();
-            } catch (Exception e) {
-                throw new RuntimeException("Error getting url of jar");
-            }
-        }
+        List<File> jars = this.findJars(pathName);
+        URL[] urls = this.buildUrls(jars);
         URLClassLoader childClassLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
         try {
             return (C) Class.forName(className, true, childClassLoader).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException c) {
-            throw new RuntimeException("Error cargando la clase", c);
+            throw new RuntimeException("Error cargando la clase " + className, c);
         }
+    }
+
+    private URL[] buildUrls(List<File> files) {
+        URL[] urls = new URL[files.size()];
+        for (int i = 0; i < files.size(); i++) {
+            try {
+                urls[i] = files.get(i).toURI().toURL();
+            } catch (Exception e) {
+                throw new RuntimeException("Error getting url of file: " + files.get(i), e);
+            }
+        }
+        return urls;
+    }
+
+    private List<File> findJars(String pathName) {
+        File file = new File(pathName);
+        File[] files = Optional.of(file).map(File::listFiles).orElse(new File[]{});
+        return Arrays.asList(files).stream().filter(i->i.getPath().endsWith(".jar")).collect(Collectors.toList());
     }
 
 }
