@@ -11,8 +11,10 @@ public class CustomerClassLoader {
 
     public <C> C load(String pathName, String className) {
         List<File> jars = this.findJars(pathName);
+        if (jars.isEmpty())
+            return null;
         URL[] urls = this.buildUrls(jars);
-        URLClassLoader childClassLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
+        URLClassLoader childClassLoader = new URLClassLoader(urls);
         try {
             return (C) Class.forName(className, true, childClassLoader).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException c) {

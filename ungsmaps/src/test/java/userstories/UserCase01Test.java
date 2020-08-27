@@ -1,6 +1,7 @@
 package userstories;
 
 import core.CustomerClassLoader;
+import exceptions.LoadingClassException;
 import implementation.LocationMock;
 import model.Coordinate;
 import model.Location;
@@ -71,15 +72,16 @@ public class UserCase01Test {
 
     @Test
     public void loadProviderB_inPathInvalid_returnNull() {
-        Assert.assertNull(this.loader.load(this.pathInexist, "implementation.LocationMocka"));
+        Assert.assertNull(this.loader.load(this.pathInexist, "implementation.LocationMock"));
     }
 
     @Test
     public void loadProviderB_inPathEmpty_returnNull() {
-        Assert.assertNull(this.loader.load(this.pathEmpty, "implementation.LocationMock"));
+        Location provider = this.loader.load(this.pathEmpty, "implementation.LocationMock");
+        Assert.assertNull(provider);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = LoadingClassException.class)
     public void loadProviderD_inPathWithJarOk_throwException() {
         this.loader.load(this.pathInexist, "implementation.ProviderNotImplemented");
     }
