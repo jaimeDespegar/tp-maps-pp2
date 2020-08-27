@@ -20,7 +20,7 @@ public class CircuitBreakerFactoryTest {
     }
 
     @Test
-    public void test() {
+    public void buildCircuitBreakerTest() {
         ICircuitBreaker circuitBreaker = this.instance.build(new LocationMock());
         Assert.assertEquals(circuitBreaker.getClass(), CircuitBreaker.class);
     }
