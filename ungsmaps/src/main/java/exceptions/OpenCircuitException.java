@@ -1,4 +1,4 @@
-package circuitBreaker;
+package exceptions;
 
 public class OpenCircuitException extends RuntimeException {
 

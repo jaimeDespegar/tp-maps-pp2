@@ -1,5 +1,6 @@
 package core;
 
+import exceptions.LoadingClassException;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -15,7 +16,7 @@ public class CustomerClassLoader {
         try {
             return (C) Class.forName(className, true, childClassLoader).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException c) {
-            throw new RuntimeException("Error cargando la clase " + className, c);
+            throw new LoadingClassException("Error cargando la clase " + className);
         }
     }
 

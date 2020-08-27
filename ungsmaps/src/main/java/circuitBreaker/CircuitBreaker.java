@@ -3,6 +3,7 @@ package circuitBreaker;
 import com.google.common.collect.Lists;
 import core.CircuitState;
 import core.ICircuitBreaker;
+import exceptions.OpenCircuitException;
 import model.Coordinate;
 import model.Location;
 import java.util.List;

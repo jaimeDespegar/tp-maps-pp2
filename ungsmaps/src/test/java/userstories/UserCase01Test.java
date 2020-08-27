@@ -1,5 +1,6 @@
 package userstories;
 
+import core.CustomerClassLoader;
 import implementation.LocationMock;
 import model.Coordinate;
 import model.Location;
@@ -7,9 +8,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 public class UserCase01Test {
 
     private Location providerA, providerB, providerC;
+    private CustomerClassLoader loader;
+    private String pathInexist, pathEmpty, pathWithJar;
 
     @Before
     public void setUp() {
@@ -20,49 +25,69 @@ public class UserCase01Test {
         this.providerA.off();
         this.providerB.on();
         this.providerC.on();
+
+        this.loader = new CustomerClassLoader();
+
+        this.pathInexist = "/home/jaimequispe/noexists";
+        this.pathEmpty = "/home/jaimequispe/ungs";
+        this.pathWithJar = "/home/jaimequispe/ungs/pp2/jars";
     }
 
     @Test
-    public void providerA_isActiveTest() {
+    public void turnOn_providerA_Test() {
         this.providerA.on();
         Assert.assertTrue(this.providerA.isAvailable());
     }
 
     @Test
-    public void providerB_isActiveTest() {
+    public void turnOn_providerB_Test() {
         this.providerB.on();
         Assert.assertTrue(this.providerB.isAvailable());
     }
 
     @Test
-    public void providerC_isNotActiveTest() {
+    public void turnOff_providerC_Test() {
         this.providerC.off();
         Assert.assertFalse(this.providerC.isAvailable());
     }
 
     @Test
-    public void providerA_isNotActiveTest() {
-        this.providerA.off();
-        Assert.assertFalse(this.providerA.isAvailable());
-    }
-
-
-    @Test
     public void providerB_resultCoordinatesEmptyTest() {
-        //LocationSearchDto locationSearchDtoEmpty = new LocationSearchBuilder().withArrival(23, 41).withDeparture(40, 60).build();
-        Assert.assertTrue(this.providerB.getData(new Coordinate(23,41), new Coordinate(40,60)).isEmpty());
+        List<Coordinate> road = this.providerB.getData(new Coordinate(23,41), new Coordinate(40,60));
+        Assert.assertTrue(road.isEmpty());
     }
 
     @Test
     public void providerB_resultCoordinatesSizeOneTest() {
-        //LocationSearchDto locationSearchDtoOne = new LocationSearchBuilder().withArrival(22, 66).withDeparture(22, 66).build();
-        Assert.assertEquals(this.providerB.getData(new Coordinate(22,66), new Coordinate(22,66)).size(), 1);
+        List<Coordinate> road = this.providerB.getData(new Coordinate(22,66), new Coordinate(22,66));
+        Assert.assertEquals(road.size(), 1);
     }
 
     @Test
     public void providerB_resultCoordinatesSizeThreeTest() {
-        //LocationSearchDto locationSearchDtoThree = new LocationSearchBuilder().withArrival(11, 22).withDeparture(33, 44).build();
-        Assert.assertEquals(this.providerB.getData(new Coordinate(11,22), new Coordinate(33,44)).size(), 3);
+        List<Coordinate> road = this.providerB.getData(new Coordinate(11,22), new Coordinate(33,44));
+        Assert.assertEquals(road.size(), 3);
+    }
+
+    @Test
+    public void loadProviderB_inPathInvalid_returnNull() {
+        Assert.assertNull(this.loader.load(this.pathInexist, "implementation.LocationMocka"));
+    }
+
+    @Test
+    public void loadProviderB_inPathEmpty_returnNull() {
+        Assert.assertNull(this.loader.load(this.pathEmpty, "implementation.LocationMock"));
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void loadProviderD_inPathWithJarOk_throwException() {
+        this.loader.load(this.pathInexist, "implementation.ProviderNotImplemented");
+    }
+
+    @Test
+    public void loadProviderB_inPathWithJarOk_returnImplementation() {
+        Location provider = this.loader.load(this.pathWithJar, "implementation.LocationMock");
+        Assert.assertEquals(provider.getClass(), LocationMock.class);
     }
 
 }

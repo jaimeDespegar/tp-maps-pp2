@@ -2,7 +2,7 @@ package circuitBreaker.states;
 
 import core.CircuitState;
 import core.ICircuitBreaker;
-import circuitBreaker.OpenCircuitException;
+import exceptions.OpenCircuitException;
 import model.Coordinate;
 import org.joda.time.DateTime;
 import java.util.List;
