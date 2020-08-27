@@ -20,7 +20,8 @@ import java.util.List;
 
 public class UserCase02Test {
 
-    private ICircuitBreaker circuitBreakerClose, circuitBreakerFail, circuitBreakerHalfOpenOk, circuitBreakerHalfOpenFail;
+    private ICircuitBreaker circuitBreakerClose, circuitBreakerCloseFail, circuitBreakerFail,
+                            circuitBreakerHalfOpenOk, circuitBreakerHalfOpenFail;
     private Location providerA;
     @Mock
     private Location providerFail;
@@ -35,6 +36,7 @@ public class UserCase02Test {
         this.stateOpen = new OpenCircuitState();
 
         this.circuitBreakerClose = new CircuitBreaker(providerA, new CloseCircuiteState());
+        this.circuitBreakerCloseFail = new CircuitBreaker(providerFail, new CloseCircuiteState(1));
         this.circuitBreakerFail = new CircuitBreaker(providerA, this.stateOpen);
         this.circuitBreakerHalfOpenOk = new CircuitBreaker(providerA, new HalfOpenCircuitState());
         this.circuitBreakerHalfOpenFail = new CircuitBreaker(providerFail, new HalfOpenCircuitState());
@@ -46,9 +48,15 @@ public class UserCase02Test {
     }
 
     @Test
-    public void circuitIsClose_thenReturnRoadWithThreeCoordinates_test() {
+    public void circuitIsClose_withProvederA_thenReturnRoadWithThreeCoordinates_test() {
         List<Coordinate> road = this.circuitBreakerClose.doSomething(this.from, this.to);
         Assert.assertEquals(road.size(), 3);
+    }
+
+    @Test
+    public void circuitIsClose_withProvederB_thenReturnEmptyRoad_test() {
+        List<Coordinate> road = this.circuitBreakerCloseFail.doSomething(this.from, this.to);
+        Assert.assertTrue(road.isEmpty());
     }
 
     @Test

@@ -12,7 +12,7 @@ public class ClassLoaderFactory implements ClassFactory {
     }
 
     @Override
-    public <C> C build(String pathName, String className) {
+    public <C> C load(String pathName, String className) {
         return this.customerClassLoader.load(pathName, className);
     }
 

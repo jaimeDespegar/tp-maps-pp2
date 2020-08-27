@@ -2,6 +2,6 @@ package core;
 
 public interface ClassFactory {
 
-    <C> C build(String pathName, String className);
+    <C> C load(String pathName, String className);
 
 }
