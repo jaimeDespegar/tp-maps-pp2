@@ -8,8 +8,17 @@ import java.util.List;
 
 public class CloseCircuiteState implements CircuitState {
 
-    private static final Integer MAX_COUNT_FAILS = 3;
+    private static final Integer MAX_COUNT_FAILS_DEFAULT = 3;
+    private Integer maxCountFails;
     private Integer attempts = 0;
+
+    public CloseCircuiteState(Integer maxCountFails) {
+        this.maxCountFails = maxCountFails;
+    }
+
+    public CloseCircuiteState() {
+        this(MAX_COUNT_FAILS_DEFAULT);
+    }
 
     @Override
     public List<Coordinate> call(ICircuitBreaker context, Coordinate from, Coordinate to) {
@@ -17,7 +26,7 @@ public class CloseCircuiteState implements CircuitState {
             return context.getProvider().getData(from, to);
         } catch (RuntimeException re) {
             this.attempts++;
-            if (MAX_COUNT_FAILS.equals(this.attempts)) {
+            if (this.maxCountFails.equals(this.attempts)) {
                 context.setCurrentState(new OpenCircuitState());
             }
             return Lists.newArrayList();

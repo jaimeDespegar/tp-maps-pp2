@@ -83,7 +83,7 @@ public class UserCase01Test {
 
     @Test(expected = LoadingClassException.class)
     public void loadProviderD_inPathWithJarOk_throwException() {
-        this.loader.load(this.pathInexist, "implementation.ProviderNotImplemented");
+        this.loader.load(this.pathWithJar, "implementation.ProviderNotImplemented");
     }
 
     @Test
