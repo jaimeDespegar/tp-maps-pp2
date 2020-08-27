@@ -8,7 +8,6 @@ import model.Location;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.List;
 
 public class UserCase01Test {

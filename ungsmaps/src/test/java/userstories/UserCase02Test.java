@@ -1,9 +1,7 @@
 package userstories;
 
 import circuitBreaker.CircuitBreaker;
-import circuitBreaker.states.CloseCircuiteState;
-import circuitBreaker.states.HalfOpenCircuitState;
-import circuitBreaker.states.OpenCircuitState;
+import circuitBreaker.states.*;
 import core.CircuitState;
 import core.ICircuitBreaker;
 import exceptions.OpenCircuitException;
