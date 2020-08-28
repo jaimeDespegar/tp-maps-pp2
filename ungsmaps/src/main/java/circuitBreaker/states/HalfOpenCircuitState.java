@@ -12,7 +12,7 @@ public class HalfOpenCircuitState implements CircuitState {
     public List<Coordinate> call(ICircuitBreaker context, Coordinate from, Coordinate to) {
         try {
             List<Coordinate> list = context.getProvider().getData(from, to);
-            context.setCurrentState(new CloseCircuiteState());
+            context.setCurrentState(new CloseCircuitState());
             return list;
         } catch (RuntimeException e) {
             context.setCurrentState(new OpenCircuitState());

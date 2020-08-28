@@ -6,17 +6,17 @@ import com.google.common.collect.Lists;
 import model.Coordinate;
 import java.util.List;
 
-public class CloseCircuiteState implements CircuitState {
+public class CloseCircuitState implements CircuitState {
 
     private static final Integer MAX_COUNT_FAILS_DEFAULT = 3;
     private Integer maxCountFails;
     private Integer attempts = 0;
 
-    public CloseCircuiteState(Integer maxCountFails) {
+    public CloseCircuitState(Integer maxCountFails) {
         this.maxCountFails = maxCountFails;
     }
 
-    public CloseCircuiteState() {
+    public CloseCircuitState() {
         this(MAX_COUNT_FAILS_DEFAULT);
     }
 

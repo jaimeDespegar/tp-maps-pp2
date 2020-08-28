@@ -33,8 +33,8 @@ public class UserCase02Test {
         this.providerA = new LocationMock();
         this.stateOpen = new OpenCircuitState();
 
-        this.circuitBreakerClose = new CircuitBreaker(providerA, new CloseCircuiteState());
-        this.circuitBreakerCloseFail = new CircuitBreaker(providerFail, new CloseCircuiteState(1));
+        this.circuitBreakerClose = new CircuitBreaker(providerA, new CloseCircuitState());
+        this.circuitBreakerCloseFail = new CircuitBreaker(providerFail, new CloseCircuitState(1));
         this.circuitBreakerFail = new CircuitBreaker(providerA, this.stateOpen);
         this.circuitBreakerHalfOpenOk = new CircuitBreaker(providerA, new HalfOpenCircuitState());
         this.circuitBreakerHalfOpenFail = new CircuitBreaker(providerFail, new HalfOpenCircuitState());

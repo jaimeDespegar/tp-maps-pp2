@@ -1,7 +1,7 @@
 package factories;
 
 import circuitBreaker.CircuitBreaker;
-import circuitBreaker.states.CloseCircuiteState;
+import circuitBreaker.states.CloseCircuitState;
 import core.Service;
 import core.ServiceFactory;
 import factory.LocationServiceFactory;
@@ -22,7 +22,7 @@ public class ServiceFactoryTest {
 
     @Test
     public void buildLocationServiceTest() {
-        Service service = this.instance.build(new CircuitBreaker(new LocationMock(), new CloseCircuiteState()));
+        Service service = this.instance.build(new CircuitBreaker(new LocationMock(), new CloseCircuitState()));
         Assert.assertEquals(service.getClass(), LocationService.class);
     }
 

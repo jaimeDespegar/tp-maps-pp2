@@ -1,7 +1,7 @@
 package services;
 
 import circuitBreaker.CircuitBreaker;
-import circuitBreaker.states.CloseCircuiteState;
+import circuitBreaker.states.CloseCircuitState;
 import implementation.LocationMock;
 import model.Coordinate;
 import org.junit.Assert;
@@ -14,7 +14,7 @@ public class LocationServiceTest {
 
     @Before
     public void setUp() {
-        this.instance = new LocationService(new CircuitBreaker(new LocationMock(), new CloseCircuiteState()));
+        this.instance = new LocationService(new CircuitBreaker(new LocationMock(), new CloseCircuitState()));
     }
 
     @Test
